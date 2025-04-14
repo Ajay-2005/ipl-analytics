@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Match {
+  id              Int      @id
+  season          Int
+  city            String?
+  date            DateTime
+  match_type      String?
+  player_of_match String?
+  venue           String?
+  team1           String
+  team2           String
+  toss_winner     String
+  toss_decision   String
+  winner          String?
+  result          String?
+  result_margin   String?
+  target_runs     Int?
+  target_overs    Float?
+  super_over      Boolean
+  method          String?
+  umpire1         String?
+  umpire2         String?
+
+  deliveries Delivery[] @relation("MatchDeliveries")
+}
+
+model Delivery {
+  id               Int     @id @default(autoincrement())
+  match_id         Int
+  inning           Int
+  batting_team     String
+  bowling_team     String
+  over             Int
+  ball             Int
+  batter           String
+  bowler           String
+  non_striker      String
+  batsman_runs     Int
+  extra_runs       Int
+  total_runs       Int
+  extras_type      String?
+  is_wicket        Boolean
+  player_dismissed String?
+  dismissal_kind   String?
+  fielder          String?
+
+  match Match @relation("MatchDeliveries", fields: [match_id], references: [id])
+}
