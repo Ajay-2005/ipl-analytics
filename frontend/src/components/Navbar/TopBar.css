@@ -1,0 +1,12 @@
+.top-bar{
+  background-color:#015379;
+  color:white;
+  display: flex;
+  position:fixed;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  padding:10px;
+  padding-left: 75px;
+  align-items: center;
+}
