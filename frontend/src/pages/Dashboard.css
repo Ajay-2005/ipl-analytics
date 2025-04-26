@@ -121,6 +121,51 @@
   font-weight: 500;
   color:#1e293b
 }
+/* Add this to App.css or a specific HeadToHeadCharts.css */
+
+.head-to-head-section {
+  padding: 2rem;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin: 2rem 0;
+}
+
+.head-to-head-section h2 {
+  font-size: 1.8rem;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.head-to-head-description {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  max-width: 1200px;
+}
+
+.team-select-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.team-select-container label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.team-select-container select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+
 
 
 @media (max-width: 768px) {

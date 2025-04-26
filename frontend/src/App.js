@@ -5,12 +5,7 @@ import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        {/* You can add more routes below */}
-      </Routes>
-    </Router>
+    <Dashboard/>
   );
 }
 

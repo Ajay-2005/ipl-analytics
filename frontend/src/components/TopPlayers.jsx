@@ -15,20 +15,14 @@ const BarChartComponent = ({ data }) => {
     <ResponsiveContainer width="100%" height={500}>
       <BarChart
         data={data}
-        margin={{ top: 20, right: 30, left: 100, bottom: 80}}
-        layout="vertical" // For horizontal bars
+        margin={{ top: 20, right: 30, left: 100, bottom: 80 }}
+        layout="vertical"
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis type="number" />
-        <YAxis dataKey="name" type="category"/>
-        
-        
-        {/* Tooltip */}
+        <YAxis dataKey="name" type="category" />
         <Tooltip />
-        
-        {/* Bar element */}
         <Bar dataKey="value" fill="#22d3ee">
-          {/* Label for the bars */}
           <LabelList dataKey="value" position="right" />
         </Bar>
       </BarChart>

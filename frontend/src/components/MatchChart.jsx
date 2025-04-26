@@ -15,7 +15,7 @@ const MatchCountChart = ({ data }) => {
     <ResponsiveContainer width="100%" height={500}>
       <BarChart
         data={data}
-        layout="vertical"  // For horizontal bars
+        layout="vertical"
         margin={{ top: 20, right: 30, left: 100, bottom: 50 }}
       >
         <CartesianGrid strokeDasharray="3 3" />

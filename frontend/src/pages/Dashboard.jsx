@@ -6,6 +6,7 @@ import TopBar from "../components/Navbar/TopBar";
 import SideBar from "../components/Navbar/SideBar";
 import './Dashboard.css';
 import BarChartComponent from "../components/TopPlayers"
+import { HeadToHeadCharts } from "../components/HeadToHeadStats/HeadToHeadStats";
 
 const Dashboard = () => {
   const [totalStats, setTotalStats] = useState({ totalMatches: 0, totalTeams: 0, totalSeasons: 0 });
@@ -16,6 +17,8 @@ const Dashboard = () => {
   const [selectedSeason, setSelectedSeason] = useState("All");
   const [teams, setTeams] = useState([]);
   const [seasons, setSeasons] = useState([]);
+  const [team1, setTeam1] = useState('Chennai Super Kings');
+  const [team2, setTeam2] = useState('Mumbai Indians');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,6 +91,7 @@ const Dashboard = () => {
   }, [selectedTeam, selectedSeason]);
 
 
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -149,6 +153,48 @@ const Dashboard = () => {
               </label>
             </div>
             <BarChartComponent data={topPlayers} />
+
+          </div>
+          <div className="head-to-head-section">
+            <h2>Head to Head Stats</h2>
+            <p className="head-to-head-description">
+              This section provides insights into the head-to-head performance of teams in the IPL. You can analyze how teams have fared against each other over the seasons.
+            </p>
+            <div className="team-select-container">
+              <label>
+                Team1:
+                <select
+                  value={team1}
+                  onChange={(e) => setTeam1(e.target.value)}
+                >
+                  <option value="All">All</option>
+                  {teams.map((team) => (
+                    <option key={team} value={team}>
+                      {team}
+                    </option>
+                  ))}
+                </select>
+
+              </label>
+              <label>
+                Team2:
+                <select
+                  value={team2}
+                  onChange={(e) => setTeam2(e.target.value)}
+                >
+                  <option value="All">All</option>
+                  {teams.map((team) => (
+                    <option key={team} value={team}>
+                      {team}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+            </div>
+            <div className="head-to-head-charts">
+              <HeadToHeadCharts team1={team1} team2={team2} />
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,92 @@
+/* HeadToHeadCharts.css */
+
+/* Main container for the charts */
+.head-to-head-container {
+    padding: 2rem;
+    background-color: #f9fafb;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+  }
+  
+  /* Flexbox to create rows with two charts per row */
+  .chart-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+  
+  /* Ensure each chart takes up 48% of the row width */
+  .chart-item {
+    flex: 1;
+    max-width: 48%;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  }
+  
+  /* Styling for chart titles */
+  .chart-item h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #1f2937;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* Description of each chart below the title */
+  .chart-item p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  
+  /* Pie chart slice hover effect */
+  .recharts-pie-slice:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Styling for BarChart components */
+  .recharts-bar-chart {
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+  }
+  
+  .recharts-tooltip {
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+  
+  /* Custom styling for BarChart labels */
+  .recharts-label-list {
+    font-size: 0.9rem;
+    font-weight: bold;
+    fill: #333;
+  }
+  .legend-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  

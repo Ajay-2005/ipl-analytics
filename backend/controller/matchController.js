@@ -364,7 +364,7 @@ exports.getHeadToHeadStats = async (req, res) => {
             },
             _sum: { batsman_runs: true },
             orderBy: { _sum: { batsman_runs: 'desc' } },
-            take: 1
+            take: 3
         });
 
         // Extract the top run scorer and their total runs
@@ -382,7 +382,7 @@ exports.getHeadToHeadStats = async (req, res) => {
             },
             _count: { is_wicket: true },
             orderBy: { _count: { is_wicket: 'desc' } },
-            take: 1
+            take: 3
         });
 
         const topBowling = topBowler[0] ? {
