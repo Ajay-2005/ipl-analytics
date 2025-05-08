@@ -14,7 +14,7 @@ app.use(cors())
 app.use('/api/matches', matchRoutes);
 app.use('/api/deliveries', deliveryRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  customSiteTitle: 'IPL Analytics API' // ✅ Hide the top Swagger header bar
+  customSiteTitle: 'IPL Analytics API' 
 }));
 
 app.listen((port), () => {
