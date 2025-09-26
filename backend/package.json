@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "load-data":"node Scripts/loadData.js && node Script/normaizePlayerAwards.js",
+    "dev":"nodemon index.js",
+    "prisma:migrate": "npx prisma migrate deploy",
+    "prisma:generate": "npx prisma generate"
   },
   "author": "",
   "license": "ISC",
