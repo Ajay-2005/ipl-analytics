@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "load-data":"node Scripts/loadData.js && node Script/normaizePlayerAwards.js",
-    "dev":"nodemon index.js",
-    "build": "npm run prisma:generate && npm run prisma:migrate"
+    "dev":"nodemon index.js"
   },
   "author": "",
   "license": "ISC",
