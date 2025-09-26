@@ -8,8 +8,7 @@
     "start": "node index.js",
     "load-data":"node Scripts/loadData.js && node Script/normaizePlayerAwards.js",
     "dev":"nodemon index.js",
-    "prisma:migrate": "npx prisma migrate deploy",
-    "prisma:generate": "npx prisma generate"
+    "build": "npm run prisma:generate && npm run prisma:migrate"
   },
   "author": "",
   "license": "ISC",
