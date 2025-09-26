@@ -173,7 +173,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\USER\\DataAnalytics\\generated\\prisma",
+      "value": "C:\\Users\\USER\\DataAnalytics\\backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -184,10 +184,14 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\USER\\DataAnalytics\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\USER\\DataAnalytics\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -201,16 +205,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:maddy@localhost:5432/mydb?schema=public"
+        "value": null
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Match {\n  id            Int      @id\n  season        Int\n  city          String?\n  date          DateTime\n  match_type    String?\n  venue         String?\n  team1         String\n  team2         String\n  toss_winner   String\n  toss_decision String\n  winner        String?\n  result        String?\n  result_margin String?\n  target_runs   Int?\n  target_overs  Float?\n  super_over    Boolean\n  method        String?\n  umpire1       String?\n  umpire2       String?\n\n  deliveries   Delivery[]   @relation(\"MatchDeliveries\")\n  player_award PlayerAward? @relation(\"PlayerAwards\")\n}\n\nmodel Delivery {\n  id               Int     @id @default(autoincrement())\n  match_id         Int\n  inning           Int\n  batting_team     String\n  bowling_team     String\n  over             Int\n  ball             Int\n  batter           String\n  bowler           String\n  non_striker      String\n  batsman_runs     Int\n  extra_runs       Int\n  total_runs       Int\n  extras_type      String?\n  is_wicket        Boolean\n  player_dismissed String?\n  dismissal_kind   String?\n  fielder          String?\n\n  match Match @relation(\"MatchDeliveries\", fields: [match_id], references: [id])\n}\n\nmodel PlayerAward {\n  id      Int    @id @default(autoincrement())\n  matchId Int    @unique\n  season  Int\n  player  String\n  team    String\n\n  match Match @relation(\"PlayerAwards\", fields: [matchId], references: [id])\n}\n",
-  "inlineSchemaHash": "925a4ec8dd016e9fbd680c26b4786750b4a8df1bf87a52ad962c78ab8a992f52",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Match {\n  id            Int      @id\n  season        Int\n  city          String?\n  date          DateTime\n  match_type    String?\n  venue         String?\n  team1         String\n  team2         String\n  toss_winner   String\n  toss_decision String\n  winner        String?\n  result        String?\n  result_margin String?\n  target_runs   Int?\n  target_overs  Float?\n  super_over    Boolean\n  method        String?\n  umpire1       String?\n  umpire2       String?\n\n  deliveries   Delivery[]   @relation(\"MatchDeliveries\")\n  player_award PlayerAward? @relation(\"PlayerAwards\")\n}\n\nmodel Delivery {\n  id               Int     @id @default(autoincrement())\n  match_id         Int\n  inning           Int\n  batting_team     String\n  bowling_team     String\n  over             Int\n  ball             Int\n  batter           String\n  bowler           String\n  non_striker      String\n  batsman_runs     Int\n  extra_runs       Int\n  total_runs       Int\n  extras_type      String?\n  is_wicket        Boolean\n  player_dismissed String?\n  dismissal_kind   String?\n  fielder          String?\n\n  match Match @relation(\"MatchDeliveries\", fields: [match_id], references: [id])\n}\n\nmodel PlayerAward {\n  id      Int    @id @default(autoincrement())\n  matchId Int    @unique\n  season  Int\n  player  String\n  team    String\n\n  match Match @relation(\"PlayerAwards\", fields: [matchId], references: [id])\n}\n",
+  "inlineSchemaHash": "00726a2ed7f0feb11d1aa6f80648c7a59fd18cca09e3808a9a36d6f5a3f68254",
   "copyEngine": true
 }
 
@@ -251,6 +256,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "generated/prisma/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")

@@ -194,6 +194,4 @@ exports.getPlayerStats = async (req, res) => {
         console.error('Error in getPlayerStats:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-};
-
-
+}
