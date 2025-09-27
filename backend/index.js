@@ -21,23 +21,25 @@ app.get('/swagger.json', (req, res) => {
 
 //custom css and custom js required for running on serverless system(vercel)
 app.use(
-  '/',
+  '/api-docs',
   swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
+  swaggerUi.setup(undefined, { // pass undefined because we’re using URL
     customSiteTitle: 'IPL Analytics API',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.0/swagger-ui.css',
-    swaggerOptions: {
-      url: '/swagger.json'// used to fetch routes for rendering on UI
-    },
     customJs: [
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.0/swagger-ui-bundle.js',
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.0/swagger-ui-standalone-preset.js',
     ],
+    swaggerOptions: {
+      url: '/swagger.json', // fetch routes
+    },
   })
 );
+
 
 app.listen((port), () => {
   console.log(`Server is running on port ${port}`);
 
 });
+
 
