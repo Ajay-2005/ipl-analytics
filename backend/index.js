@@ -13,9 +13,20 @@ app.use(express.json());
 app.use(cors())
 app.use('/api/matches', matchRoutes);
 app.use('/api/deliveries', deliveryRoutes);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-  customSiteTitle: 'IPL Analytics API' 
-}));
+
+//custom css and custom js required for running on serverless system(vercel)
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    customSiteTitle: 'IPL Analytics API',
+    customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.0/swagger-ui.css',
+    customJs: [
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.0/swagger-ui-bundle.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.29.0/swagger-ui-standalone-preset.js',
+    ],
+  })
+);
 
 app.listen((port), () => {
   console.log(`Server is running on port ${port}`);
