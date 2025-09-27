@@ -16,7 +16,7 @@ app.use('/api/deliveries', deliveryRoutes);
 
 //custom css and custom js required for running on serverless system(vercel)
 app.use(
-  '/api-docs',
+  '/',
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, {
     customSiteTitle: 'IPL Analytics API',
@@ -30,4 +30,5 @@ app.use(
 
 app.listen((port), () => {
   console.log(`Server is running on port ${port}`);
+
 });
